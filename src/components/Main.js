@@ -21,18 +21,35 @@ function Main() {
 
     return (
         <section className="Main">
-            {listOfMovies.map( movie => {
-                return(
-                    <div key={movie.id} className="movie">
-                        <h1>{movie.title}</h1>
-                        <img src={movie.imgURL} />
-                        <p>Year: {movie.year}</p>
-                        <p>Rating: {movie.rating}</p>
 
-                        <button onClick={()=>{ deleteMovie(movie.id) }}>Delete</button>
-                    </div>
-                )
-            })}
+            { 
+                listOfMovies.length ? 
+                <>
+                    <p> We currently have {listOfMovies.length} movies in our catalog </p>
+                    {listOfMovies.map( movie => {
+
+                        let imgContent;
+
+                        movie.imgURL ? imgContent = <img src={movie.imgURL} alt={movie.title} /> : imgContent = 'Image not available'
+
+                        return(
+                            <div key={movie.id} className="movie">
+                                <h1>{movie.title}</h1>
+                                {imgContent}
+                                <p>Year: {movie.year}</p>
+                                <p>Rating: {movie.rating}</p>
+                                { movie.rating >= 8 && <p> RECOMMEND </p> } 
+                                <button onClick={()=>{ deleteMovie(movie.id) }}>Delete</button>
+                            </div>
+                        )
+                    })} 
+                </>     
+                : 
+                <> 
+                 <p>Sorry, no movies to display yet</p>
+                </>
+            }
+            
 
         </section>
     )
