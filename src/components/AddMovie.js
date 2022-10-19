@@ -2,18 +2,16 @@ import { useState } from "react";
 
 function AddMovie({callbackToCreate}) {
 
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = ("");
     const [year, setYear] = useState("");
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
         const newMovie = {
             title: title,
             year: year,
             rating: 7
         }
-
         callbackToCreate(newMovie);
 
         //clear form
