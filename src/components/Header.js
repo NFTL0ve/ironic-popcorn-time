@@ -1,9 +1,10 @@
 import "./Header.css"
 
-function Header(){
+function Header(props){
     return(
         <header className="Header">
-            <h1>this is the Header component</h1>
+            <h1>Popcorn Time!</h1>
+            <h2> We currently have {props.numberOfMovies} movies in our catalog </h2>
         </header>
     )
 }
