@@ -21,33 +21,28 @@ function Main() {
 
     return (
         <section className="Main">
-
+            
             { 
-                listOfMovies.length ? 
-                <>
-                    <p> We currently have {listOfMovies.length} movies in our catalog </p>
-                    {listOfMovies.map( movie => {
-
-                        let imgContent;
-
-                        movie.imgURL ? imgContent = <img src={movie.imgURL} alt={movie.title} /> : imgContent = 'Image not available'
-
-                        return(
-                            <div key={movie.id} className="movie">
-                                <h1>{movie.title}</h1>
-                                {imgContent}
-                                <p>Year: {movie.year}</p>
-                                <p>Rating: {movie.rating}</p>
-                                { movie.rating >= 8 && <p> RECOMMEND </p> } 
-                                <button onClick={()=>{ deleteMovie(movie.id) }}>Delete</button>
-                            </div>
-                        )
-                    })} 
-                </>     
-                : 
-                <> 
-                 <p>Sorry, no movies to display yet</p>
-                </>
+                listOfMovies.length === 0
+                    ? <p>Sorry, no movies to display yet</p>
+                    :
+                    <>
+                        <p> We currently have {listOfMovies.length} movies in our catalog </p>
+                        {listOfMovies.map( movie => {
+                            return(
+                                <div key={movie.id} className="movie">
+                                    <h1>{movie.title}</h1>
+                                    
+                                    {movie.imgURL ?  <img src={movie.imgURL} alt={movie.title} /> : 'Image not available'}
+                                    
+                                    <p>Year: {movie.year}</p>
+                                    <p>Rating: {movie.rating}</p>
+                                    { movie.rating >= 8 && <p> RECOMMEND </p> } 
+                                    <button onClick={()=>{ deleteMovie(movie.id) }}>Delete</button>
+                                </div>
+                            )
+                        })} 
+                    </>     
             }
             
 
