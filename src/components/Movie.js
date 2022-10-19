@@ -1,16 +1,16 @@
-function Movie(props) {
+function Movie({details}) {
     return(
         <section className="Movie">
-            <h1>{props.details.title}</h1>
+            <h1>{details.title}</h1>
             
-            { props.details.imgURL 
-                ? <img src={props.details.imgURL} alt={props.details.title} /> 
+            { details.imgURL 
+                ? <img src={details.imgURL} alt={details.title} /> 
                 : 'Image not available'
             }
             
-            <p>Year: {props.details.year}</p>
-            <p>Rating: {props.details.rating}</p>
-            {props.details.rating >= 8 && <p>RECOMMEND</p>}
+            <p>Year: {details.year}</p>
+            <p>Rating: {details.rating}</p>
+            {details.rating >= 8 && <p>RECOMMEND</p>}
         </section>
     );
 }
