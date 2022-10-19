@@ -1,5 +1,6 @@
 import { useState } from "react";
 import moviesArray from "../data/movies.json";
+import Movie from "./Movie";
 
 function Main() {
 
@@ -30,16 +31,7 @@ function Main() {
                         <p> We currently have {listOfMovies.length} movies in our catalog </p>
                         {listOfMovies.map( movie => {
                             return(
-                                <div key={movie.id} className="movie">
-                                    <h1>{movie.title}</h1>
-                                    
-                                    {movie.imgURL ?  <img src={movie.imgURL} alt={movie.title} /> : 'Image not available'}
-                                    
-                                    <p>Year: {movie.year}</p>
-                                    <p>Rating: {movie.rating}</p>
-                                    { movie.rating >= 8 && <p> RECOMMEND </p> } 
-                                    <button onClick={()=>{ deleteMovie(movie.id) }}>Delete</button>
-                                </div>
+                                <Movie key={movie.id} details={movie} />
                             )
                         })} 
                     </>     
