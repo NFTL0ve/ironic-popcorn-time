@@ -6,15 +6,9 @@ function Main() {
 
     const [listOfMovies, setListOfMovies ] = useState(moviesArray);
 
-    const deleteMovie = (movieId) => {
-        //const newList = listOfMovies.splice(xxx, 1); //VERY BAD: splice mutates the original array (never modify state directly)
-        const newList = listOfMovies.filter( (movie) => {
-            // if(movie.id === movieId){
-            //     return false;
-            // } else {
-            //     return true;
-            // }
 
+    const deleteMovie = (movieId) => {
+        const newList = listOfMovies.filter((movie) => {
             return movie.id !== movieId;
         });
         setListOfMovies(newList);
@@ -31,7 +25,11 @@ function Main() {
                         <p> We currently have {listOfMovies.length} movies in our catalog </p>
                         {listOfMovies.map( movie => {
                             return(
-                                <Movie key={movie.id} details={movie} />
+                                <Movie 
+                                    key={movie.id} 
+                                    details={movie} 
+                                    callbackToDelete={deleteMovie} 
+                                />
                             )
                         })} 
                     </>     
