@@ -10,10 +10,10 @@ function Main({movies, callbackToDelete}) {
                     ? <p>Sorry, no movies to display yet</p>
                     :
                     <>
-                        {movies.map( movie => {
+                        {movies.map( (movie, index) => {
                             return(
                                 <Movie 
-                                    key={movie.id} 
+                                    key={index} 
                                     details={movie} 
                                     callbackToDelete={callbackToDelete} 
                                 />

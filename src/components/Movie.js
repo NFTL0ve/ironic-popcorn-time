@@ -1,5 +1,6 @@
-function Movie({details, callbackToDelete}) {
+import "./Movie.css"
 
+function Movie({details, callbackToDelete}) {
     
     return(
         <section className="Movie">
@@ -14,7 +15,7 @@ function Movie({details, callbackToDelete}) {
             <p>Rating: {details.rating}</p>
             {details.rating >= 8 && <p>RECOMMEND</p>}
 
-            <button onClick={()=>{callbackToDelete(details.id)}}>Delete</button>
+            <button onClick={()=>{callbackToDelete(details.title)}}>Delete</button>
         </section>
     );
 }

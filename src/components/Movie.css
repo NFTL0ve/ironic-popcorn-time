@@ -1,0 +1,6 @@
+.Movie {
+    border: 1px solid #333;
+    background-color: rgb(255, 245, 225);
+    margin: 1rem;
+    padding: 1rem;
+}
